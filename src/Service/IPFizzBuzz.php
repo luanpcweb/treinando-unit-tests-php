@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Execption\InvalidIP4Format;
+use App\Exception\InvalidIP4Format;
 
 class IPFizzBuzz
 {
@@ -26,7 +26,7 @@ class IPFizzBuzz
         if ($return === "") {
             $return = $lastNumber;
         }
-        
+
         return $return;
     }
 }
