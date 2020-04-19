@@ -41,9 +41,40 @@ class IPFizzBuzzTest extends TestCase
     /**
      * @test
      */
-    public function notAllPartsTest()
+    public function shouldSameReturn()
     {
-        $this->ipFizzBuzz->getFizzBuzzByIP("127.0.0");
-        //$this->expectException(InvalidIP4Format::class);
+        $numberPartD = 11;
+        $this->assertEquals($numberPartD, $this->ipFizzBuzz->getFizzBuzzByIP("10.10.10.".$numberPartD));
     }
+
+    /**
+     * @test
+     */
+    public function emptyIP()
+    {
+        $this->expectException(InvalidIP4Format::class);
+
+        $this->ipFizzBuzz->getFizzBuzzByIP('');
+    }
+
+    /**
+     * @test
+     */
+    public function notAllPartsOfIP()
+    {
+        $this->expectException(InvalidIP4Format::class);
+
+        $this->ipFizzBuzz->getFizzBuzzByIP("127.0.0");
+    }
+
+    /**
+     * @test
+     */
+    public function noArgumentInMethod()
+    {
+        $this->expectException(\ArgumentCountError::class);
+
+        $this->ipFizzBuzz->getFizzBuzzByIP();
+    }
+
 }
